@@ -128,6 +128,14 @@ We are going to focus on (1) for most of this talk.
 
 ---
 
+## Story Conclusion
+
+* I was able to do faster and more reliable crawls under a fraction of the earlier costs.
+* Re-used the same architecture and system successfully in the next two startups I worked for.
+
+
+---
+
 ## Typical Deployment and Costs
 
 * Gateway Node - 2GB Linode (10 $pm)
