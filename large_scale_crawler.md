@@ -149,3 +149,52 @@ We are going to focus on (1) for most of this talk.
 
 ---
 
+## The Data problem
+
+* The ML problem is a data problem
+* The data problem is two fold - Getting data, cleaning data
+* We needed to a few ten million URLs 
+* From six "data sources" via. "undocumented APIs"
+
+---
+
+## The blocking problem
+
+* The sources were blocking the crawlers from the same IP after a few dozen hits.
+* The initial solution was to use `tor`. 
+* About 4s per URL. Too slow.
+
+---
+
+## Used the rotating proxy
+
+* Added AWS support.
+* Used a cluster of 10 proxies and the load balancer.
+
+---
+
+## A digression
+
+* Machines got compromised twice.
+* Used about 1 month of bandwidth in half a day.
+
+--- 
+
+## Performance improvement
+
+* Once set up, we got between 0.9 and 1.5s per URL.
+* Some issues still persisted. 
+  * Changing user-agents
+  * Frequency of rotation
+
+---
+
+## Some thoughts and future plans
+
+* Abstract out cloud provider.
+* Create ansible notebooks for machine setups.
+* Modernise the infrastructure some more.
+* Perhaps make the whole thing available as a service? :)
+
+
+
