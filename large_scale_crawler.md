@@ -11,14 +11,14 @@ __Noufal Ibrahim__, <noufal@nibrahim.net.in>, @noufalibrahim <br/>
 <tr><td><img src="anand.jpg" /></td><td><img src="noufal_ibrahim.jpg" /></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anand B Pillai</td>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Noufal Ibrahim</td></tr>
-<tr><td><font size="2pt">&nbsp;&nbsp;&nbsp;&nbsp;PSF Fellow, Author, Software Architect.</font></td>
-<td><font size="2pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PSF Fellow, Founder & CEO, Hamon Technologies.</font></td></tr>
+<tr><td><font size="2pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PSF Fellow, Author, Software Architect.</font></td>
+<td><font size="2pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PSF Fellow, Founder & CEO, Hamon Technologies.</font></td></tr>
 </table>
 
 ---
 ## This talk is composed of two stories.
 
-* Story of an Engineer solving an `itch` and publishing the source code.
+* Story of an Engineer solving an *itch* and publishing the source code.
 * Story of how this was used by one of his friends to solve a problem.
 
 ---
@@ -95,7 +95,7 @@ We are going to focus on (1) for most of this talk.
 * Most of these services limit your concurrent connections (usually 100-200 connections max)
 * You don't have control over the actual proxy servers.
 * You share the proxy nodes with others - not great for security.
-* Your costs escalate pretty soon if your crawls are huge.
+* Your costs escalate pretty soon if your crawls are huge and continuous.
 
 ---
 
@@ -104,6 +104,15 @@ We are going to focus on (1) for most of this talk.
 * Build a proxy rotator with `Linode` as the ISP
 * A Python middleware program takes care of active proxy rotation.
 * Proxies use `squid` to fetch pages. Caching on proxies can be turned on or off.
+
+---
+
+## Why Linode ?
+
+* Has a nice and simple API which can be easily automated via Python.
+* A Python wrapper on the API was already available which was forked & enhanced.
+* Has data centers in Europe, Asia apart from multiple ones in US.
+* Very reasonable VPS costs.
 
 ---
 
@@ -149,43 +158,45 @@ We are going to focus on (1) for most of this talk.
 
 ---
 
-## The Data problem
+## The Data Problem
 
 * The ML problem is a data problem
-* The data problem is two fold - Getting data, cleaning data
-* We needed to a few ten million URLs 
+* The data problem is two fold
+    * Getting data
+    * Cleaning data
+* We needed a few ten million URLs 
 * From six "data sources" via. "undocumented APIs"
 
 ---
 
-## The blocking problem
+## The Blocking Problem
 
 * The sources were blocking the crawlers from the same IP after a few dozen hits.
 * The initial solution was to use `tor`. 
-* About 4s per URL. Too slow.
+* About 4s per URL. Tooooo slow...!
 
 ---
 
-## Used the rotating proxy
+## Used the Rotating Proxy
 
-* Added AWS support.
+* Added AWS support (and contributed code back to the project)
 * Used a cluster of 10 proxies and the load balancer.
 
 ---
 
-## A digression
+## A Digression
 
 * Machines got compromised twice.
-* Used about 1 month of bandwidth in half a day.
+* Used about 1 month of bandwidth in half a day :-P
 
 --- 
 
-## Performance improvement
+## Performance Improvement
 
 * Once set up, we got between 0.9 and 1.5s per URL.
 * Some issues still persisted. 
-  * Changing user-agents
-  * Frequency of rotation
+    * Changing User-agents
+    * Frequency of Rotation
 
 ---
 
@@ -196,5 +207,18 @@ We are going to focus on (1) for most of this talk.
 * Modernise the infrastructure some more.
 * Perhaps make the whole thing available as a service? :)
 
+---
 
+## References
+
+1. [Rotating Proxy Daemon](https://github.com/pythonhacker/rotating-proxy-daemon)
+1. [Linode Python API](https://bitbucket.org/skeptichacker/linode/)
+1. [Squid Caching Proxy](http://squid-cache.org/)
+1. [HAProxy](http://www.haproxy.org)
+1. [MultiCrawler](https://github.com/pythonhacker/multicrawler)
+1. [Scrapy Rotating Proxies](https://github.com/TeamHG-Memex/scrapy-rotating-proxies)
+
+---
+
+Thank You.
 
